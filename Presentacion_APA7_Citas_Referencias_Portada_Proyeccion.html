@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Presentación académica sobre normas APA 7, formato, citas, referencias y gestores bibliográficos.">
+<title>Normas APA 7.ª edición y gestores bibliográficos | Gabriel Copa Rojas</title>
+<style>
+:root{
+  --ink:#18343a;--muted:#617579;--teal:#147d70;--teal2:#1da18d;
+  --mint:#e6f4ef;--gold:#e9bd50;--cream:#fbfaf6;--paper:#fff;
+  --line:#d8e6e1;--soft:#f3f8f6;--red:#a84d43;--shadow:0 18px 55px rgba(20,55,55,.16);
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;font-family:Arial,"Segoe UI",sans-serif;color:var(--ink);background:#e8efed}
+body{display:flex;align-items:center;justify-content:center;overflow:hidden}
+#deck{position:relative;width:min(100vw,177.777vh);height:min(100vh,56.25vw);aspect-ratio:16/9;background:var(--paper);overflow:hidden;box-shadow:var(--shadow)}
+.slide{position:absolute;inset:0;padding:5.1% 6.1% 7.5%;overflow-y:auto;opacity:0;transform:translateX(1.5%);pointer-events:none;transition:opacity .25s ease,transform .25s ease;background:linear-gradient(135deg,#fff 0%,#fff 75%,#f1f8f5 100%)}
+.slide:before{content:"";position:fixed;left:0;top:0;width:10px;height:100%;background:var(--teal)}
+.slide.active{opacity:1;transform:none;pointer-events:auto}
+.kicker{font-size:clamp(14px,1.25vw,19px);font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--teal);margin:0 0 .65rem}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(42px,5.2vw,82px);line-height:1.02;letter-spacing:-.04em;margin-bottom:1.1rem}
+h2{font-size:clamp(34px,3.7vw,56px);line-height:1.08;letter-spacing:-.025em;margin-bottom:1.2rem}
+h3{font-size:clamp(22px,1.9vw,30px);margin-bottom:.55rem}
+p,li{font-size:clamp(19px,1.7vw,26px);line-height:1.45}
+p{margin-bottom:.75rem}
+li{margin:.3rem 0}
+ul,ol{padding-left:1.25em;margin:.35rem 0}
+.lead{font-size:clamp(23px,2.05vw,32px);line-height:1.4;color:#34545a;max-width:920px}
+.small{font-size:clamp(17px,1.35vw,21px);color:var(--muted);line-height:1.45}
+.tiny{font-size:clamp(13px,1.05vw,17px);color:var(--muted);line-height:1.35}
+.accent{color:var(--teal)}
+.gold{color:#9b7410}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;align-items:stretch}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.45rem 1.55rem;box-shadow:0 6px 18px rgba(25,70,62,.055)}
+.card.soft{background:var(--mint);border-color:#cce7dc}
+.card.goldbg{background:#fff8e4;border-color:#f0dfae}
+.card.redbg{background:#fff1ee;border-color:#efd0c9}
+.pill{display:inline-block;border-radius:999px;padding:.35rem .75rem;background:var(--mint);color:var(--teal);font-size:clamp(13px,1vw,16px);font-weight:800;letter-spacing:.02em}
+.icon{font-size:1.8rem;margin-bottom:.35rem}
+.callout{background:#f2f7f5;border-left:5px solid var(--teal2);padding:1rem 1.2rem;border-radius:0 12px 12px 0;margin-top:.9rem;font-size:clamp(16px,1.25vw,20px);line-height:1.45}
+.callout.warn{border-left-color:var(--gold);background:#fff9e9}
+.example{background:#fafbf9;border:1px solid var(--line);border-radius:14px;padding:1.15rem 1.35rem;font-family:Georgia,"Times New Roman",serif;font-size:clamp(21px,1.8vw,29px);line-height:1.55;overflow-wrap:anywhere;color:#173b43}
+.example.block{margin-left:1.27cm;border-radius:0;border-left:5px solid #80b9a9;background:#f7fbf9;padding:1.2rem 1.35rem;font-size:clamp(20px,1.65vw,27px)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:13px;margin:.7rem 0}
+table{border-collapse:collapse;width:100%;font-size:clamp(15px,1.2vw,19px);line-height:1.35;background:#fff}
+th{background:#eaf4f0;color:#214a49;text-align:left;font-weight:800}
+th,td{padding:.8rem .9rem;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.ref{padding-left:1.27cm;text-indent:-1.27cm;margin:.55rem 0;font-size:clamp(15px,1.2vw,19px);line-height:1.45;overflow-wrap:anywhere}
+.ref a{color:#176f9a}
+.two-col{columns:2;column-gap:2rem}
+.two-col li{break-inside:avoid}
+.footer{position:absolute;bottom:2.1%;left:6.1%;right:6%;display:flex;align-items:center;gap:.7rem;color:#81918f;font-size:12px;pointer-events:none}
+.footer .rule{height:1px;background:var(--line);flex:1}
+#controls{position:absolute;right:1.2%;bottom:1.1%;display:flex;align-items:center;gap:.4rem;z-index:30}
+.btn{border:0;background:var(--ink);color:#fff;min-width:38px;height:38px;padding:0 12px;border-radius:999px;font-size:17px;cursor:pointer}
+.btn:hover{background:var(--teal)}
+.btn.text{font-size:12px;font-weight:700}
+#progress{position:absolute;left:0;bottom:0;height:5px;background:var(--gold);width:0;transition:width .2s;z-index:40}
+#counter{font-size:12px;color:var(--muted);min-width:48px;text-align:center}
+.cover-art{position:absolute;right:-2%;top:-3%;width:40%;height:108%;background:linear-gradient(145deg,#e2f4ed,#fff 68%);clip-path:polygon(22% 0,100% 0,100% 100%,0 100%);display:flex;align-items:center;justify-content:center}
+.mark{width:66%;aspect-ratio:1;border-radius:30px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.mark strong{font-size:clamp(60px,8vw,120px);line-height:.9;color:var(--teal)}
+.mark span{font-size:clamp(12px,1.1vw,18px);font-weight:800;letter-spacing:.12em;color:var(--muted);margin-top:1rem}
+.cover-meta{display:grid;grid-template-columns:auto 1fr;gap:.45rem .8rem;margin-top:1.8rem;font-size:clamp(13px,1.1vw,18px);max-width:650px}
+.cover-meta b{color:var(--teal)}
+.center{text-align:center}
+.tagline{display:inline-block;background:var(--ink);color:#fff;border-radius:999px;padding:.55rem .9rem;font-size:12px;font-weight:800;letter-spacing:.08em}
+.number{font-size:clamp(32px,4vw,58px);font-weight:900;color:var(--teal);line-height:1}
+@media(max-width:700px){
+ body{display:block;overflow:hidden}
+ #deck{width:100vw;height:100dvh;aspect-ratio:auto;box-shadow:none}
+ .slide{padding:8% 6% 17%;overflow-y:auto}
+ .slide:before{width:5px}
+ h1{font-size:clamp(32px,10vw,52px)}
+ h2{font-size:clamp(29px,7.5vw,42px)}
+ p,li{font-size:17px}
+ .lead{font-size:20px}
+ .grid2,.grid3,.grid4{grid-template-columns:1fr}
+ .cover-art{opacity:.18;width:60%;right:-15%}
+ .cover-meta{position:relative;z-index:2}
+ .footer{bottom:2.5%;left:6%;right:6%;font-size:10px}
+ #controls{right:3%;bottom:5%;gap:.3rem}
+ .btn{min-width:36px;height:36px}
+ .example{font-size:20px;padding:1rem;line-height:1.5}.example.block{margin-left:.55cm;font-size:19px}
+ .two-col{columns:1}
+}
+@media print{
+ html,body{height:auto;overflow:visible;background:#fff;display:block}
+ #deck{width:100%;height:auto;overflow:visible;box-shadow:none;aspect-ratio:auto}
+ .slide{position:relative;opacity:1;transform:none;pointer-events:auto;width:100%;height:56.25vw;min-height:650px;page-break-after:always;overflow:hidden}
+ #controls,#progress{display:none}
+}
+
+/* Ajustes de legibilidad para proyección en aula */
+@media (min-width:701px){
+  .kicker{font-size:clamp(16px,1.25vw,21px);line-height:1.25}
+  h3{font-size:clamp(25px,2vw,32px);line-height:1.12}
+  p,li{font-size:clamp(21px,1.75vw,28px);line-height:1.38}
+  .lead{font-size:clamp(25px,2vw,33px);line-height:1.35}
+  .small{font-size:clamp(19px,1.5vw,24px);line-height:1.38}
+  .tiny{font-size:clamp(17px,1.3vw,21px);line-height:1.35}
+  .callout{font-size:clamp(19px,1.45vw,23px);line-height:1.4;padding:.85rem 1rem}
+  table{font-size:clamp(18px,1.4vw,22px);line-height:1.3}
+  th,td{padding:.65rem .7rem}
+  .ref{font-size:clamp(18px,1.35vw,21px);line-height:1.35}
+  .pill{font-size:clamp(16px,1.2vw,19px)}
+  .cover-meta{font-size:clamp(20px,1.5vw,24px);gap:.6rem .9rem;margin-top:1.35rem;max-width:740px;width:57%;line-height:1.35}
+  .footer{font-size:15px}
+  .tagline{font-size:15px}
+  .card{padding:1.15rem 1.25rem}
+  .grid2{gap:1rem}
+  .grid3{gap:.8rem}
+  .grid4{gap:.65rem}
+  /* Diapositiva 7: lectura reforzada en proyección */
+  .slide:nth-of-type(7) .card li{font-size:clamp(22px,1.8vw,28px);line-height:1.35;margin:.35rem 0}
+  .slide:nth-of-type(7) .card h3{font-size:clamp(27px,2.15vw,34px)}
+  .slide:nth-of-type(7) .callout{font-size:clamp(21px,1.65vw,26px);margin-top:.8rem}
+  /* Tablas y referencias: evitar tipografía residual demasiado pequeña */
+  .slide:nth-of-type(8) table{font-size:clamp(18px,1.35vw,21px)}
+  .slide:nth-of-type(18) .ref{font-size:clamp(18px,1.3vw,21px)}
+  .slide:nth-of-type(23) .small{font-size:clamp(18px,1.35vw,21px)}
+  .slide:nth-of-type(23) .tiny{font-size:clamp(17px,1.2vw,19px)}
+  .slide:nth-of-type(26) .ref{font-size:clamp(18px,1.35vw,21px);margin:.45rem 0}
+}
+
+/* Ajustes puntuales para que todas las diapositivas entren en pantalla */
+@media (min-width:701px){
+  .cover-art{top:0;height:100%}
+  .slide:nth-of-type(6) .lead{font-size:clamp(21px,1.6vw,23px);line-height:1.25;margin-bottom:.45rem}
+  .slide:nth-of-type(6) .table-wrap{margin:.45rem 0}
+  .slide:nth-of-type(6) table{font-size:clamp(18px,1.3vw,20px);line-height:1.25}
+  .slide:nth-of-type(6) th,.slide:nth-of-type(6) td{padding:.52rem .65rem}
+  .slide:nth-of-type(6) .callout{font-size:18px;padding:.65rem .85rem;margin-top:.55rem}
+
+  .slide:nth-of-type(16) h2{margin-bottom:.75rem}
+  .slide:nth-of-type(16) .lead{font-size:clamp(21px,1.55vw,23px);line-height:1.25;margin-bottom:.45rem}
+  .slide:nth-of-type(16) .grid2{gap:.8rem}
+  .slide:nth-of-type(16) .card{padding:.75rem .9rem}
+  .slide:nth-of-type(16) .number{font-size:clamp(38px,3.2vw,46px)}
+  .slide:nth-of-type(16) h3{font-size:clamp(24px,1.8vw,26px);margin-bottom:.3rem}
+  .slide:nth-of-type(16) .card p{font-size:20px;line-height:1.28;margin-bottom:.15rem}
+  .slide:nth-of-type(16) .callout{font-size:18px;line-height:1.3;padding:.55rem .8rem;margin-top:.55rem}
+
+  .slide:nth-of-type(18) .card{padding:.8rem 1rem}
+  .slide:nth-of-type(18) .card[style]{margin-bottom:.45rem !important}
+  .slide:nth-of-type(18) .ref{font-size:clamp(18px,1.3vw,21px);line-height:1.28;margin:.35rem 0}
+  .slide:nth-of-type(18) .tiny{font-size:17px;margin-top:.25rem}
+
+  .slide:nth-of-type(21) h2{margin-bottom:.75rem}
+  .slide:nth-of-type(21) .lead{font-size:clamp(22px,1.65vw,24px);line-height:1.25;margin-bottom:.65rem}
+  .slide:nth-of-type(21) .grid2{gap:.8rem}
+  .slide:nth-of-type(21) .card{padding:.8rem .95rem}
+  .slide:nth-of-type(21) .icon{font-size:1.45rem;margin-bottom:.2rem}
+  .slide:nth-of-type(21) h3{font-size:clamp(24px,1.8vw,26px);margin-bottom:.3rem}
+  .slide:nth-of-type(21) .card p{font-size:20px;line-height:1.28;margin-bottom:.15rem}
+  .slide:nth-of-type(21) .callout{font-size:18px;line-height:1.3;padding:.6rem .85rem;margin-top:.6rem}
+
+  .slide:nth-of-type(22) .card{padding:.85rem 1rem}
+  .slide:nth-of-type(22) .number{font-size:clamp(40px,3.2vw,48px)}
+  .slide:nth-of-type(22) .card p{font-size:20px;line-height:1.3;margin-bottom:.2rem}
+  .slide:nth-of-type(22) .callout{font-size:18px;line-height:1.3;padding:.6rem .85rem;margin-top:.6rem}
+}
+
+</style>
+</head>
+<body>
+<main id="deck" aria-label="Presentación sobre normas APA séptima edición">
+
+<section class="slide active">
+  <div class="kicker">Presentación académica</div>
+  <h1>Normas APA<br><span class="accent">7.ª edición</span></h1>
+  <p class="lead" style="max-width:55%">Formato del documento, citas, referencias y criterios para comunicar investigaciones con claridad y rigor académico.</p>
+  <div class="cover-meta">
+    <b>Estudiante</b><span>Gabriel Copa Rojas</span>
+    <b>Área</b><span>Ciencias de la Educación · Tecnología Educativa</span>
+    <b>Docente</b><span>Doctor Carlos Bravo Reyes</span>
+  </div>
+  <div class="cover-art"><div class="mark"><strong>APA</strong><span>7.ª EDICIÓN</span></div></div>
+  <div class="footer"><span>01</span><div class="rule"></div><span>Normas APA</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">01 · Contextualización</div>
+  <h2>¿Qué son las normas APA?</h2>
+  <div class="grid2">
+    <div>
+      <p class="lead">El estilo APA es un conjunto de pautas para presentar trabajos académicos y comunicar información científica de manera clara, uniforme y verificable.</p>
+      <p>Establece criterios para organizar el documento, redactar, citar fuentes, elaborar referencias y presentar tablas y figuras.</p>
+    </div>
+    <div class="grid2">
+      <div class="card soft"><div class="icon">🧭</div><h3>Organizar</h3><p class="small">Estructura y formato coherentes.</p></div>
+      <div class="card"><div class="icon">✍️</div><h3>Comunicar</h3><p class="small">Redacción clara, precisa y objetiva.</p></div>
+      <div class="card goldbg"><div class="icon">©</div><h3>Reconocer</h3><p class="small">Atribución de ideas y aportes.</p></div>
+      <div class="card"><div class="icon">🔎</div><h3>Verificar</h3><p class="small">Localización de las fuentes.</p></div>
+    </div>
+  </div>
+  <div class="callout"><b>Idea central:</b> APA no es solamente un formato de presentación; también es un sistema de atribución y documentación de fuentes.</div>
+  <div class="footer"><span>02</span><div class="rule"></div><span>Concepto y propósito</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">02 · Origen y evolución</div>
+  <h2>¿Cómo surgió el estilo APA?</h2>
+  <div class="grid2">
+    <div class="card soft">
+      <div class="number">1929</div>
+      <h3>Primeras pautas</h3>
+      <p>Un grupo de especialistas propuso pautas para facilitar la lectura y uniformar la presentación de escritos científicos.</p>
+    </div>
+    <div class="card">
+      <div class="number">1952</div>
+      <h3>Primer manual</h3>
+      <p>La American Psychological Association publicó la primera edición del <i>Publication Manual</i>.</p>
+    </div>
+  </div>
+  <div class="callout warn"><b>Edición vigente:</b> la séptima edición se publicó en 2019. Es la edición que se aborda en esta presentación.</div>
+  <div class="footer"><span>03</span><div class="rule"></div><span>Historia</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">03 · Aplicación</div>
+  <h2>¿Dónde se utiliza el estilo APA?</h2>
+  <p class="lead">Se utiliza ampliamente en psicología, educación y ciencias sociales, aunque también puede ser adoptado por otras disciplinas e instituciones.</p>
+  <div class="grid3">
+    <div class="card soft"><div class="icon">🧠</div><h3>Psicología</h3><p class="small">Informes, artículos y estudios sobre conducta y procesos mentales.</p></div>
+    <div class="card"><div class="icon">🎓</div><h3>Educación</h3><p class="small">Trabajos de investigación, tesis, ensayos y proyectos educativos.</p></div>
+    <div class="card goldbg"><div class="icon">🌐</div><h3>Ciencias sociales</h3><p class="small">Estudios sociales, análisis institucionales y publicaciones científicas.</p></div>
+  </div>
+  <div class="callout">La institución o revista puede establecer requisitos adicionales. Conviene revisar siempre su guía de presentación.</div>
+  <div class="footer"><span>04</span><div class="rule"></div><span>Ámbitos de uso</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">04 · Formato del documento</div>
+  <h2>Configuración general de la página</h2>
+  <div class="grid2">
+    <div class="card soft">
+      <div class="number">2,54 cm</div>
+      <h3>Márgenes</h3>
+      <p>Una pulgada en los cuatro lados: superior, inferior, izquierdo y derecho.</p>
+    </div>
+    <div class="card">
+      <div class="number">2,0</div>
+      <h3>Interlineado</h3>
+      <p>Doble espacio en el texto, incluidas las referencias, salvo excepciones justificadas.</p>
+    </div>
+    <div class="card">
+      <h3>Alineación</h3>
+      <p>Texto alineado a la izquierda, con margen derecho irregular. No justificar el texto.</p>
+    </div>
+    <div class="card goldbg">
+      <h3>Sangría de párrafo</h3>
+      <p>Primera línea con sangría de 1,27 cm (0,5 pulgadas), como regla general.</p>
+    </div>
+  </div>
+  <div class="callout"><b>Papel:</b> tamaño carta (21,59 × 27,94 cm) es el formato estándar APA. Si la institución exige otro tamaño, se debe seguir su disposición.</div>
+  <div class="footer"><span>05</span><div class="rule"></div><span>Márgenes y párrafos</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">05 · Tipografía</div>
+  <h2>Tipos de letra y tamaños permitidos</h2>
+  <p class="lead">APA 7 admite varias fuentes legibles. Se debe mantener la misma tipografía en todo el documento, salvo excepciones previstas.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tipo de letra</th><th>Tamaño</th><th>Observación</th></tr></thead>
+      <tbody>
+        <tr><td>Times New Roman</td><td><b>12 pt</b></td><td>Serif; opción tradicional en trabajos académicos.</td></tr>
+        <tr><td>Arial</td><td><b>11 pt</b></td><td>Sans serif; lectura clara en pantalla e impresión.</td></tr>
+        <tr><td>Calibri</td><td><b>11 pt</b></td><td>Sans serif; ampliamente disponible.</td></tr>
+        <tr><td>Georgia</td><td><b>11 pt</b></td><td>Serif; alternativa legible.</td></tr>
+        <tr><td>Lucida Sans Unicode</td><td><b>10 pt</b></td><td>Sans serif; adecuada para caracteres especiales.</td></tr>
+        <tr><td>Computer Modern</td><td><b>10 pt</b></td><td>Fuente habitual en documentos LaTeX.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout warn">No existe una única tipografía obligatoria. Si la universidad o el docente exige Arial 11, Times New Roman 12 u otra opción, se debe respetar esa indicación.</div>
+  <div class="footer"><span>06</span><div class="rule"></div><span>Tipografía</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">06 · Elementos de página</div>
+  <h2>Número de página y encabezado</h2>
+  <div class="grid2">
+    <div class="card soft">
+      <h3>Número de página</h3>
+      <ul>
+        <li>Se coloca en la esquina superior derecha.</li>
+        <li>Se utiliza numeración arábiga (1, 2, 3…).</li>
+        <li>La portada también lleva número de página.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Encabezado</h3>
+      <ul>
+        <li>En trabajos estudiantiles normalmente basta con el número de página.</li>
+        <li>El título abreviado o encabezado de página se utiliza cuando corresponde, por ejemplo, en trabajos profesionales.</li>
+        <li>No se escribe “Running head:” en la versión actual.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">La portada estudiantil suele incluir título del trabajo, autor, afiliación institucional, asignatura, docente y fecha de entrega, según los requisitos académicos.</div>
+  <div class="footer"><span>07</span><div class="rule"></div><span>Encabezado y portada</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">07 · Organización</div>
+  <h2>Jerarquía de títulos: cinco niveles</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Nivel</th><th>Formato APA 7</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td><b>1</b></td><td>Centrado, negrita; texto inicia en párrafo nuevo.</td><td>Sección principal.</td></tr>
+        <tr><td><b>2</b></td><td>Alineado a la izquierda, negrita; texto inicia en párrafo nuevo.</td><td>Subsección.</td></tr>
+        <tr><td><b>3</b></td><td>Alineado a la izquierda, negrita y cursiva; texto inicia en párrafo nuevo.</td><td>Subsección del nivel 2.</td></tr>
+        <tr><td><b>4</b></td><td>Con sangría, negrita, punto final; texto continúa en la misma línea.</td><td>Subapartado.</td></tr>
+        <tr><td><b>5</b></td><td>Con sangría, negrita y cursiva, punto final; texto continúa en la misma línea.</td><td>Subapartado del nivel 4.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footer"><span>08</span><div class="rule"></div><span>Niveles de encabezado</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">08 · Citas</div>
+  <h2>¿Qué es una cita?</h2>
+  <p class="lead">Es la mención dentro del texto de una idea, dato o fragmento procedente de otra fuente, con la atribución necesaria para reconocer su origen.</p>
+  <div class="grid2">
+    <div class="card soft"><div class="icon">©</div><h3>Reconocer autoría</h3><p>Da crédito a las contribuciones intelectuales de otras personas.</p></div>
+    <div class="card"><div class="icon">📖</div><h3>Documentar</h3><p>Permite identificar y recuperar las fuentes que respaldan el trabajo.</p></div>
+    <div class="card goldbg"><div class="icon">🧩</div><h3>Argumentar</h3><p>Integra antecedentes, evidencias y perspectivas al razonamiento propio.</p></div>
+    <div class="card"><div class="icon">⚖️</div><h3>Actuar éticamente</h3><p>Ayuda a prevenir el plagio y la apropiación indebida de ideas.</p></div>
+  </div>
+  <div class="footer"><span>09</span><div class="rule"></div><span>Propósito de las citas</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">09 · Modalidades de citación</div>
+  <h2>Dos formas de citar una misma idea</h2>
+  <div class="grid2">
+    <div class="card soft">
+      <span class="pill">Cita narrativa</span>
+      <h3 style="margin-top:.7rem">El autor forma parte de la oración</h3>
+      <div class="example">Pérez (2022) sostiene que la planificación favorece el aprendizaje.</div>
+    </div>
+    <div class="card">
+      <span class="pill">Cita parentética</span>
+      <h3 style="margin-top:.7rem">Autor y año van entre paréntesis</h3>
+      <div class="example">La planificación favorece el aprendizaje (Pérez, 2022).</div>
+    </div>
+  </div>
+  <div class="callout"><b>Recuerda:</b> narrativa = apellido integrado en la redacción; parentética = apellido y año entre paréntesis.</div>
+  <p class="small">Ejemplo didáctico con datos ficticios; reemplázalos por la fuente realmente consultada.</p>
+  <div class="footer"><span>10</span><div class="rule"></div><span>Formas de citar</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">10 · Cita textual</div>
+  <h2>Cita directa corta: menos de 40 palabras</h2>
+  <p class="lead">El fragmento se copia exactamente, se integra en el párrafo y se escribe entre comillas dobles.</p>
+  <div class="grid2">
+    <div class="card soft">
+      <span class="pill">Narrativa</span>
+      <div class="example" style="margin-top:.8rem">Pérez (2021) afirma que “la investigación requiere procedimientos sistemáticos” (p. 35).</div>
+    </div>
+    <div class="card">
+      <span class="pill">Parentética</span>
+      <div class="example" style="margin-top:.8rem">“La investigación requiere procedimientos sistemáticos” (Pérez, 2021, p. 35).</div>
+    </div>
+  </div>
+  <div class="callout"><b>Elementos obligatorios:</b> autor + año + página o localizador. La página se indica con “p.”; varias páginas, con “pp.”.</div>
+  <p class="small">Ejemplo ilustrativo: el texto y los datos deben sustituirse por los de una fuente real.</p>
+  <div class="footer"><span>11</span><div class="rule"></div><span>Cita textual corta</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">11 · Cita textual</div>
+  <h2>Cita en bloque: 40 palabras o más</h2>
+  <div class="grid2">
+    <div>
+      <p class="lead">Se presenta separada del párrafo, sin comillas y con sangría izquierda de 1,27 cm.</p>
+      <div class="callout">
+        <b>Recuerda:</b>
+        <ul>
+          <li>Conserva el texto original.</li>
+          <li>Usa interlineado doble.</li>
+          <li>Incluye autor, año y página.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card soft">
+      <span class="pill">Ejemplo de formato</span>
+      <div class="example block" style="margin-top:.8rem">La investigación educativa requiere una planificación sistemática, decisiones metodológicas coherentes y procedimientos que permitan obtener información pertinente para responder al problema de estudio. (Pérez, 2021, p. 35).</div>
+    </div>
+  </div>
+  <p class="small">El ejemplo representa la disposición visual de una cita en bloque. En un trabajo real, utiliza un fragmento auténtico de 40 palabras o más.</p>
+  <div class="footer"><span>12</span><div class="rule"></div><span>Cita en bloque</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">12 · Cita indirecta</div>
+  <h2>Paráfrasis: expresar la idea con palabras propias</h2>
+  <p class="lead">No se copia el texto original. Se reformula la idea y se reconoce al autor.</p>
+  <div class="grid2">
+    <div class="card soft">
+      <span class="pill">Narrativa</span>
+      <div class="example" style="margin-top:.8rem">Pérez (2020) explica que la evaluación permite reconocer los avances y las necesidades del estudiante.</div>
+    </div>
+    <div class="card">
+      <span class="pill">Parentética</span>
+      <div class="example" style="margin-top:.8rem">La evaluación permite reconocer avances y necesidades del estudiante (Pérez, 2020).</div>
+    </div>
+  </div>
+  <div class="callout"><b>¿Se coloca página?</b> No es obligatoria en la paráfrasis, pero puede añadirse para ubicar una idea específica.</div>
+  <p class="small">Ejemplo didáctico con datos ficticios.</p>
+  <div class="footer"><span>13</span><div class="rule"></div><span>Paráfrasis</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">13 · Número de autores</div>
+  <h2>Cómo citar según la cantidad de autores</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Autores</th><th>Narrativa</th><th>Parentética</th></tr></thead>
+      <tbody>
+        <tr><td>Uno</td><td>Luna (2020)</td><td>(Luna, 2020)</td></tr>
+        <tr><td>Dos</td><td>Salas y Rodríguez (2020)</td><td>(Salas &amp; Rodríguez, 2020)</td></tr>
+        <tr><td>Tres o más</td><td>Martín et al. (2020)</td><td>(Martín et al., 2020)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout warn"><b>Regla APA 7:</b> con tres o más autores se escribe el primer apellido + <i>et al.</i> desde la primera cita, salvo que se produzca ambigüedad.</div>
+  <p class="small">En citas narrativas en español se utiliza “y” entre dos autores; en citas parentéticas se utiliza “&amp;”.</p>
+  <div class="footer"><span>14</span><div class="rule"></div><span>Autores</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">14 · Casos particulares</div>
+  <h2>Autor institucional y cita secundaria</h2>
+  <div class="grid2">
+    <div class="card soft">
+      <h3>Autor corporativo</h3>
+      <p class="small">Primera cita: nombre completo y abreviatura.</p>
+      <div class="example">(Organización Mundial de la Salud [OMS], 2022).</div>
+      <p class="small">Citas siguientes:</p>
+      <div class="example">(OMS, 2022).</div>
+    </div>
+    <div class="card">
+      <h3>Cita secundaria</h3>
+      <p class="small">Cuando no se consultó la obra original, se identifica la fuente intermediaria.</p>
+      <div class="example">Sternberg (1989, como se citó en Novak, 1998) plantea que…</div>
+      <p class="small">En referencias se registra la obra efectivamente consultada: Novak (1998).</p>
+    </div>
+  </div>
+  <div class="callout">Prioriza siempre consultar la fuente original. Utiliza la cita secundaria solo cuando no sea posible acceder a ella.</div>
+  <div class="footer"><span>15</span><div class="rule"></div><span>Casos especiales</span></div>
+</section>
+
+
+
+<section class="slide">
+  <div class="kicker">16 · Referencias</div>
+  <h2>Los cuatro elementos de una referencia</h2>
+  <p class="lead">Una referencia identifica una obra y permite localizarla.</p>
+  <div class="grid2">
+    <div class="card soft">
+      <div class="number">1</div>
+      <h3>Autor</h3>
+      <p>¿Quién creó o es responsable de la obra?</p>
+    </div>
+    <div class="card">
+      <div class="number">2</div>
+      <h3>Fecha</h3>
+      <p>¿En qué año se publicó?</p>
+    </div>
+    <div class="card goldbg">
+      <div class="number">3</div>
+      <h3>Título</h3>
+      <p>¿Cómo se llama el libro, artículo o documento?</p>
+    </div>
+    <div class="card">
+      <div class="number">4</div>
+      <h3>Fuente de publicación o acceso</h3>
+      <p>¿Dónde se publicó o cómo se accede? Editorial, revista, repositorio, DOI o URL.</p>
+    </div>
+  </div>
+  <div class="callout"><b>Recuerda:</b> La fuente varía según la obra: libro (editorial), artículo (revista y volumen) y recurso digital (DOI o URL).</div>
+  <div class="footer"><span>17</span><div class="rule"></div><span>Elementos de una referencia</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">17 · Formato de referencias</div>
+  <h2>Reglas para organizar las referencias</h2>
+  <div class="grid2">
+    <div class="card soft">
+      <ul>
+        <li>Comenzar en una página nueva.</li>
+        <li>Escribir <b>Referencias</b> centrado y en negrita.</li>
+        <li>Ordenar alfabéticamente por el apellido del primer autor.</li>
+        <li>Aplicar sangría francesa de 1,27 cm.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <ul>
+        <li>Mantener interlineado doble.</li>
+        <li>Escribir apellidos e iniciales de los nombres.</li>
+        <li>Ordenar obras del mismo autor cronológicamente.</li>
+        <li>Incluir DOI como enlace URL cuando exista.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout warn">Si no hay fecha, se utiliza “s. f.” en español. Si no hay autor, el título pasa a ocupar la posición inicial de la referencia.</div>
+  <div class="footer"><span>18</span><div class="rule"></div><span>Presentación de referencias</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">18 · Modelos de referencia</div>
+  <h2>Ejemplos de referencias según el tipo de fuente</h2>
+  <div class="card" style="margin-bottom:.7rem">
+    <span class="pill">Libro</span>
+    <p class="ref">Apellido, A. A. (Año). <i>Título del libro</i>. Editorial.</p>
+  </div>
+  <div class="card" style="margin-bottom:.7rem">
+    <span class="pill">Artículo científico</span>
+    <p class="ref">Apellido, A. A., &amp; Apellido, B. B. (Año). Título del artículo. <i>Nombre de la Revista, volumen</i>(número), xx–xx. https://doi.org/xxxxx</p>
+  </div>
+  <div class="card" style="margin-bottom:.7rem">
+    <span class="pill">Página web</span>
+    <p class="ref">Autor u organización. (Año, día de mes). <i>Título de la página</i>. Nombre del sitio. URL</p>
+  </div>
+  <div class="card">
+    <span class="pill">Tesis</span>
+    <p class="ref">Apellido, A. A. (Año). <i>Título de la tesis</i> [Tesis de grado o doctoral, Universidad]. Repositorio. URL</p>
+  </div>
+  <p class="tiny">Son plantillas para completar con los datos reales de cada fuente. No deben utilizarse como referencias de publicaciones existentes.</p>
+  <div class="footer"><span>19</span><div class="rule"></div><span>Modelos bibliográficos</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">19 · DOI y URL</div>
+  <h2>¿Cómo registrar fuentes digitales?</h2>
+  <div class="grid2">
+    <div class="card soft">
+      <h3>DOI</h3>
+      <p>Identificador persistente de una publicación digital. Se presenta como enlace:</p>
+      <div class="example">https://doi.org/10.xxxx/xxxxx</div>
+    </div>
+    <div class="card">
+      <h3>URL</h3>
+      <p>Dirección web que permite acceder al recurso. Debe conducir al documento o página específica, no solamente a un buscador.</p>
+      <div class="example">https://www.ejemplo.org/documento.pdf</div>
+    </div>
+  </div>
+  <div class="callout warn">En APA 7, no se escribe “DOI:” delante del identificador. Si existe DOI, se prefiere frente a una URL común. No se añade punto final después de un DOI o URL.</div>
+  <div class="footer"><span>20</span><div class="rule"></div><span>Fuentes digitales</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">20 · Tablas y figuras</div>
+  <h2>Presentación de tablas y figuras</h2>
+  <div class="grid2">
+    <div class="card soft">
+      <h3>Tablas</h3>
+      <ul>
+        <li>Número de tabla en negrita.</li>
+        <li>Título breve en cursiva, en la línea siguiente.</li>
+        <li>Encabezados claros y consistentes.</li>
+        <li>Nota debajo cuando sea necesaria.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Figuras</h3>
+      <ul>
+        <li>Número de figura en negrita.</li>
+        <li>Título breve en cursiva.</li>
+        <li>Imagen, gráfico o diagrama legible.</li>
+        <li>Nota y atribución de fuente cuando corresponda.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">Toda tabla o figura debe mencionarse en el texto y aportar información relevante; se debe evitar repetir exactamente los mismos datos en texto, tabla y gráfico.</div>
+  <div class="footer"><span>21</span><div class="rule"></div><span>Elementos visuales</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">21 · Gestores bibliográficos</div>
+  <h2>¿Qué son los gestores bibliográficos?</h2>
+  <p class="lead">Son herramientas digitales para reunir, organizar y utilizar fuentes bibliográficas durante la investigación.</p>
+  <div class="grid2">
+    <div class="card soft"><div class="icon">📥</div><h3>Recopilar</h3><p>Importan referencias desde catálogos, repositorios y sitios web.</p></div>
+    <div class="card"><div class="icon">🗂️</div><h3>Organizar</h3><p>Ordenan fuentes en carpetas, colecciones y etiquetas.</p></div>
+    <div class="card goldbg"><div class="icon">📝</div><h3>Citar</h3><p>Insertan citas en el texto y generan referencias en estilo APA.</p></div>
+    <div class="card"><div class="icon">🤝</div><h3>Compartir</h3><p>Permiten compartir bibliotecas y sincronizar registros.</p></div>
+  </div>
+  <div class="callout"><b>Su función principal:</b> No sustituyen la lectura crítica ni la revisión manual de las referencias.</div>
+  <div class="footer"><span>22</span><div class="rule"></div><span>Gestión bibliográfica</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">22 · Flujo de trabajo</div>
+  <h2>¿Cómo se utilizan en una investigación?</h2>
+  <div class="grid2">
+    <div class="card soft"><div class="number">01</div><h3>Buscar y capturar</h3><p>Localizar artículos, libros, tesis e informes; importar sus datos y guardar los archivos disponibles.</p></div>
+    <div class="card"><div class="number">02</div><h3>Verificar los datos</h3><p>Comprobar autoría, año, título, revista, volumen, páginas, DOI o URL.</p></div>
+    <div class="card"><div class="number">03</div><h3>Organizar la biblioteca</h3><p>Crear colecciones, etiquetas y notas para clasificar las fuentes por tema o capítulo.</p></div>
+    <div class="card goldbg"><div class="number">04</div><h3>Insertar citas y referencias</h3><p>Elegir el estilo APA 7, insertar citas desde el procesador de texto y generar la bibliografía.</p></div>
+  </div>
+  <div class="callout warn"><b>Control indispensable:</b> revisar cada registro y la salida bibliográfica. Los campos importados pueden estar incompletos o contener errores.</div>
+  <div class="footer"><span>23</span><div class="rule"></div><span>Proceso de uso</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">23 · Herramientas</div>
+  <h2>Principales gestores bibliográficos</h2>
+  <div class="grid3">
+    <div class="card soft">
+      <h3>Zotero</h3>
+      <p>Gestor gratuito y de código abierto, útil para recopilar referencias desde el navegador, organizar bibliotecas y citar en procesadores de texto.</p>
+      <p class="small"><b>Fortaleza:</b> captura bibliográfica y organización flexible.</p>
+      <p class="tiny"><a href="https://www.zotero.org/" target="_blank" rel="noopener">Sitio oficial de Zotero</a></p>
+    </div>
+    <div class="card">
+      <h3>Mendeley Reference Manager</h3>
+      <p>Herramienta para administrar referencias y documentos PDF, realizar anotaciones y trabajar con citas mediante sus integraciones disponibles.</p>
+      <p class="small"><b>Fortaleza:</b> gestión de artículos y lectura de PDF.</p>
+      <p class="tiny"><a href="https://www.mendeley.com/" target="_blank" rel="noopener">Sitio oficial de Mendeley</a></p>
+    </div>
+    <div class="card goldbg">
+      <h3>EndNote</h3>
+      <p>Gestor bibliográfico utilizado para organizar grandes colecciones de referencias y preparar manuscritos con estilos bibliográficos.</p>
+      <p class="small"><b>Fortaleza:</b> funciones avanzadas para flujos de publicación.</p>
+      <p class="tiny"><a href="https://endnote.com/" target="_blank" rel="noopener">Sitio oficial de EndNote</a></p>
+    </div>
+  </div>
+  <div class="callout">La elección depende del presupuesto, el sistema operativo, el procesador de texto, el trabajo colaborativo y las necesidades del proyecto.</div>
+  <div class="footer"><span>24</span><div class="rule"></div><span>Comparación de herramientas</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">24 · Buenas prácticas</div>
+  <h2>Gestores bibliográficos y rigor académico</h2>
+  <div class="grid2">
+    <div class="card soft">
+      <h3>Buenas prácticas</h3>
+      <ul>
+        <li>Guardar los datos completos desde la fuente original.</li>
+        <li>Adjuntar el PDF cuando se tenga acceso legítimo.</li>
+        <li>Corregir mayúsculas, nombres, fechas y DOI.</li>
+        <li>Respaldar y sincronizar la biblioteca.</li>
+        <li>Verificar que cada cita corresponda a su referencia.</li>
+      </ul>
+    </div>
+    <div class="card redbg">
+      <h3>Limitaciones</h3>
+      <ul>
+        <li>La importación automática puede traer metadatos erróneos.</li>
+        <li>El estilo generado puede requerir ajustes.</li>
+        <li>Un gestor no determina la calidad científica de una fuente.</li>
+        <li>No reemplaza la lectura, evaluación ni criterio del investigador.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout warn"><b>Regla de oro:</b> automatizar la organización no significa delegar la responsabilidad académica. El investigador debe comprobar la fuente y la exactitud de cada referencia.</div>
+  <div class="footer"><span>25</span><div class="rule"></div><span>Uso responsable</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">22 · Síntesis</div>
+  <h2>Errores frecuentes que debemos evitar</h2>
+  <div class="grid2">
+    <div class="card redbg"><h3>Errores de formato</h3><ul><li>Usar márgenes diferentes sin justificación.</li><li>Justificar el texto.</li><li>Combinar tipografías sin criterio.</li><li>Olvidar la sangría francesa.</li></ul></div>
+    <div class="card goldbg"><h3>Errores de citación</h3><ul><li>Omitir autor o año.</li><li>Copiar literalmente sin comillas o bloque.</li><li>Confundir paráfrasis con cita textual.</li><li>Incluir referencias que no se citan.</li></ul></div>
+  </div>
+  <div class="callout"><b>Revisión final:</b> comprobar coherencia entre citas y referencias, exactitud de los datos bibliográficos y cumplimiento de las indicaciones institucionales.</div>
+  <div class="footer"><span>23</span><div class="rule"></div><span>Control de calidad</span></div>
+</section>
+
+<section class="slide">
+  <div class="kicker">23 · Fuentes de consulta</div>
+  <h2>Referencias y materiales utilizados</h2>
+  <p class="ref">American Psychological Association. (2020). <i>Publication manual of the American Psychological Association</i> (7th ed.). https://doi.org/10.1037/0000165-000</p>
+  <p class="ref">Centro de Escritura Javeriano. (2020). <i>Normas APA, séptima edición</i>. Pontificia Universidad Javeriana, seccional Cali. <a href="https://www2.javerianacali.edu.co/centro-escritura/recursos/manual-de-normas-apa-septima-edicion" target="_blank" rel="noopener">Consultar guía</a>.</p>
+  <p class="ref">Apaza Miranda, A. (s. f.). <i>Normas APA 7.ª ed.: Para la aplicación de citas</i> [Diapositivas de clase].</p>
+  <p class="ref"><i>Citas y referencias en estilo APA</i>. (s. f.). [Presentación de PowerPoint proporcionada como material de clase].</p>
+  <div class="callout warn">Los dos últimos registros identifican los materiales de clase compartidos para preparar esta presentación. Si se conocen sus autores institucionales y fechas, se deben completar esos datos.</div>
+  <div class="footer"><span>24</span><div class="rule"></div><span>Fuentes</span></div>
+</section>
+
+<section class="slide">
+  <div class="center" style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem">
+    <span class="tagline">CIERRE</span>
+    <h1 style="font-size:clamp(42px,6vw,88px);margin:0">Gracias por su atención</h1>
+    <p class="lead center">Citar es reconocer. Referenciar es permitir verificar.</p>
+    <p class="small">Normas APA · Séptima edición</p>
+  </div>
+  <div class="footer"><span>25</span><div class="rule"></div><span>Fin</span></div>
+</section>
+
+<div id="controls" aria-label="Controles de presentación">
+  <button class="btn" id="prev" aria-label="Diapositiva anterior" title="Anterior">‹</button>
+  <span id="counter">1 / 25</span>
+  <button class="btn" id="next" aria-label="Diapositiva siguiente" title="Siguiente">›</button>
+  <button class="btn text" id="full" title="Pantalla completa">⛶</button>
+</div>
+<div id="progress"></div>
+</main>
+<script>
+(() => {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  let index = 0;
+  function show(nextIndex) {
+    index = Math.max(0, Math.min(slides.length - 1, nextIndex));
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+      const footerNumber = slide.querySelector('.footer span');
+      if (footerNumber) footerNumber.textContent = String(i + 1).padStart(2, '0');
+      if (i === index) slide.scrollTop = 0;
+    });
+    progress.style.width = ((index + 1) / slides.length * 100) + '%';
+    counter.textContent = (index + 1) + ' / ' + slides.length;
+    history.replaceState(null, '', '#' + (index + 1));
+  }
+  document.getElementById('next').addEventListener('click', () => show(index + 1));
+  document.getElementById('prev').addEventListener('click', () => show(index - 1));
+  document.getElementById('full').addEventListener('click', async () => {
+    try {
+      if (!document.fullscreenElement) await document.getElementById('deck').requestFullscreen();
+      else await document.exitFullscreen();
+    } catch (error) { /* La presentación sigue disponible sin pantalla completa. */ }
+  });
+  document.addEventListener('keydown', event => {
+    if (['ArrowRight','PageDown',' '].includes(event.key)) { event.preventDefault(); show(index + 1); }
+    if (['ArrowLeft','PageUp'].includes(event.key)) { event.preventDefault(); show(index - 1); }
+    if (event.key === 'Home') show(0);
+    if (event.key === 'End') show(slides.length - 1);
+    if (event.key.toLowerCase() === 'f') document.getElementById('full').click();
+  });
+  let startX = 0;
+  document.addEventListener('touchstart', event => { startX = event.changedTouches[0].screenX; }, {passive:true});
+  document.addEventListener('touchend', event => {
+    const delta = event.changedTouches[0].screenX - startX;
+    if (delta < -50) show(index + 1);
+    if (delta > 50) show(index - 1);
+  }, {passive:true});
+  const initial = Number.parseInt(location.hash.slice(1), 10);
+  show(Number.isFinite(initial) && initial > 0 ? initial - 1 : 0);
+})();
+</script>
+</body>
+</html>
